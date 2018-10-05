@@ -4,11 +4,17 @@
             <tr>
                 <td>Id</td>
                 <td>name</td>
+                <td>count</td>
+                <td>value</td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Livro bom</td>
-            </tr>
+            <% for(var i=0; i < lista.length; i++){ %>
+                <tr>
+                    <td><%=lista[i].id %></td>
+                    <td><%=lista[i].name %></td>
+                    <td><%=lista[i].count %></td>
+                    <td><%=lista[i].value %></td>
+                </tr>
+            <% } %>
         </table>
     </body>
 </html>
