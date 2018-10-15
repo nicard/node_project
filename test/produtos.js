@@ -2,14 +2,18 @@ var express = require('../config/express')();
 var request = require('supertest')(express);
 
 beforeEach(function(done){
-    var conn = express.infra.connectionFactory();
-    conn.query("delete from produtos", function(ex,result){
-        if(!ex) {
-            done();
-        } else {
-            console.log(ex);
-        }
-    });
+    if(process.env.NODE_ENV == 'test') {
+        var conn = express.infra.connectionFactory();
+        conn.query("delete from produtos", function (ex, result) {
+            if (!ex) {
+                done();
+            } else {
+                console.log(ex);
+            }
+        });
+    } else {
+        throw new Error('NODE_ENV have to be \'test\'');
+    }
 });
 
 describe('#ProdutosController', function(){

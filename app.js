@@ -1,5 +1,15 @@
 var app = require('./config/express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-app.listen(3000, function(){
-    console.log('Server runing não presta');
+app.set('io',io);
+
+var porta = process.env.PORT || 3000;
+var server = http.listen(porta, function () {
+
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Example app listening at http://%s:%s', host, port);
+
 });
