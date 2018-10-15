@@ -1,0 +1,32 @@
+<html>
+<body>
+<a href="/produtos" >voltar</a>
+<form action="/produtos" method="post">
+    <div class='erros'>
+        <% if(errosValidacao) { %>
+        <ul>
+            <% for(var i=0; i < errosValidacao.length; i++) {%>
+            <li>
+                <%= errosValidacao[i].param %> - <%= errosValidacao[i].msg %>
+            </li>
+            <%}%>
+        </ul>
+        <%}%>
+    </div>
+    <div>
+        <label for="name">Titulo</label>
+        <input type="text" id="name" name="name" placeholder="coloque o titulo" value="<%=produto.name%>" />
+    </div>
+    <div>
+        <label for="value">Preço</label>
+        <input type="text" id="value" name="value" placeholder="150.25" value="<%=produto.value%>"/>
+    </div>
+    <div>
+        <label for="count">Count</label>
+        <input type="text" id="count" name="count" placeholder="5" value="<%=produto.count%>"/>
+    </div>
+
+    <input type="submit" value="gravar"/>
+</form>
+</body>
+</html>
